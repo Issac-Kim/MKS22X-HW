@@ -6,15 +6,21 @@ public class Recursion{
     }
     public double sqrt(double n){
 	if(n < 0){
-	    throw new IllegalArgumentException;
+	    throw new IllegalArgumentException();
 	}
-	return sqrtHelper(n,1);
+	else{
+	    return sqrtHelper(n,1);
+	}
     }
     public double sqrtHelper(double n, double guess){
-	if((n-(guess*guess))/n < .00001){
+	if(n == 0){
+	    return 0;
+	}
+	if(Math.abs((n-guess*guess)/n) < .00001){
 	    return guess;
 	}
 	else{
+	    
 	    return sqrtHelper(n, (n/guess+guess)/2);
 	}
     }
