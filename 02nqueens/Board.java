@@ -9,23 +9,30 @@ public class Board{
 	}
     }
     public boolean solve(){
-	return solveH(0);
+	return solveH(0,0);
     }
-    public boolean solveH(int row){
+    public boolean solveH(int row,int col){
 	for(int c = 0; c < board.length; c++){
 	    if(board[board.length-1][c] == 1){
 		return true;
 	    }
 	}
-	for(int c = 0; c < board.length; c++){
-	    System.out.println(toString());
-	    if(addQueen(row,c)){
-		solveH(row + 1);
+	//	for(int c = col; c < board.length; c++){
+	//	if(col < board.length-1){
+	//  return solveH(row,col+1);
+	//	}
+	    if(addQueen(row,col)){
+		return solveH(row + 1,0);
 	    }
-	    else{
-		removeQueen(row,c);
+	    else if(col == board.length -1){
+		return false;
 	    }
-	}
+	    else if(row < board.length){
+		removeQueen(row,col);
+		return solveH(row,col+1);
+	    }
+	   
+	    //	}
 	return false;
     }
     public boolean addQueen(int row, int col){
@@ -64,7 +71,7 @@ public class Board{
 	String ans = "";
 	for(int r = 0; r < board.length; r++){
 	    for(int c = 0; c < board[0].length; c++){
-		ans+= board[r][c] + "\t";
+		ans+= board[c][r] + "\t";
 	    }
 	    ans+="\n";
 	}
