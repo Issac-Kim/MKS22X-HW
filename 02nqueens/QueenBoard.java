@@ -9,9 +9,9 @@ public class QueenBoard{
 	}
     }
     public boolean solve(){
-	return solveH(0,0);
+	return solveH(0);
     }
-    public boolean solveH(int row, int col){
+    public boolean solveH(int row){
 	for(int c = 0; c < board.length; c++){
 	    if(board[board.length-1][c] == 1){
 		return true;
@@ -19,13 +19,34 @@ public class QueenBoard{
 	}
 	for(int c = 0; c <board.length; c++){
 	    if(addQueen(row,c)){
-		return solveH(row+1,col);
+		if(solveH(row+1)){
+		    return true;
+		}
+		else{
+		    removeQueen(row,c);
+		}
 	    }
-	    removeQueen(row,col);
+	    else{
+		removeQueen(row,c);
+		
+	    }
 	    
 	}
-	
+	return false;
 
+    }
+    public void printSolution(){
+	for(int r = 0; r < board.length; r++){
+	    for(int c = 0; c < board[0].length; c++){
+		if(board[r][c] == 1){
+		    System.out.print("Q ");
+		}
+		else{
+		    System.out.print("- ");
+		}
+	    }
+	    System.out.println("");
+	}
     }
     public boolean addQueen(int row, int col){
 	if(board[row][col]!= 0){

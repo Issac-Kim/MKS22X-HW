@@ -5,5 +5,7 @@ public class Driver{
 	//System.out.println(b.addQueen(1,1));
 		System.out.println(b.solve());
 	System.out.println(b);
+	b.printSolution();
+	    
     }
 }
