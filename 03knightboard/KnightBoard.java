@@ -13,4 +13,14 @@ public class KnightBoard{
 	    }
 	}
     }
+    public String toString(){
+	String ans = "";
+	for(int r = 0; r < board.length; r++){
+	    for(int c = 0; c < board.length; c++){
+		ans+= board[r][c] + "\t";
+	    }
+	    ans += "\n";
+	}
+    }
+    
 }
