@@ -8,9 +8,20 @@ public class KnightBoard{
 		    board[r][c] = -1;
 		}
 		else{
-		    board[r][c] = 1;
+		    board[r][c] = 0;
 		}
 	    }
+	}
+    }
+    public void printSolution(){
+	for(int r = 0; r < board.length; r++){
+	    for(int c = 0; c < board.length; c++){
+		if(board[r][c] >= 0){
+		    System.out.print(board[r][c]);
+		}
+	
+	    }
+	    System.out.println("");
 	}
     }
     public String toString(){
@@ -21,6 +32,7 @@ public class KnightBoard{
 	    }
 	    ans += "\n";
 	}
+	return ans;
     }
     
 }
