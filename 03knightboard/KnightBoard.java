@@ -23,12 +23,12 @@ public class KnightBoard{
 	//	printSolution();
 	for(int i = d; i < 9; i++){
 	    
-	    if(n > size){
+	    	    if(n > size){
 		return true;
 	    }
 	    if(i == 8){
 		return false;
-	    }
+		}
 	    int[] move = getMove(i);
 	    if(moveKnight(row, col, n)){
 		if(n == size){

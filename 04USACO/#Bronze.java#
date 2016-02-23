@@ -1,0 +1,13 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Bronze{
+    
+    public Bronze(String s){
+	
+    }
+    private boolean DEBUG;
+    public static void main(String[] args){
+
+    }
+}
