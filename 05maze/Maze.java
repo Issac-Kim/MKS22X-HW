@@ -27,25 +27,26 @@ public class Maze{
 	    int l = 0;
 	    int w = 0;
 	    Scanner myScan = new Scanner(f);
-	    String s = "";
 	    while(myScan.hasNextLine()){
 		l++;
-		String temp = myScan.nextLine();
-		s += temp + "\n";
-		w = temp.length();
+		w = myScan.nextLine().length();
 	    }
 	    myScan.close();
 	    maze = new char[l][w];
-	    System.out.println(l + "," + w);
 	    myScan = new Scanner(f);
 	    int r = 0;
 	    while(myScan.hasNext()){
 		String vals = myScan.nextLine();
 		for(int c = 0; c < vals.length(); c++){
+		    if(vals.charAt(c) == 'S'){
+			startx = r;
+			starty = c;
+		    }
 		    maze[r][c] = vals.charAt(c);
 		}
 		r++;
 	    }
+	    System.out.println(startx + "," + starty);
 	}catch(FileNotFoundException e){
 	    System.out.println("no file found");
 	}
