@@ -2,10 +2,13 @@ public class KnightBoard{
     int[][] board;
     int size;
     public KnightBoard(int n){
-	board = new int[n+4][n+4];
+	this(n,n);
+    }
+    public KnightBoard(int m, int n){
+	board = new int[m+4][n+4];
 	for(int r = 0; r < board.length; r++){
-	    for(int c = 0; c < board.length; c++){
-		if(r < 2 || r > board.length - 3 || c < 2 || c >board.length -3){
+	    for(int c = 0; c < board[0].length; c++){
+		if(r < 2 || r > board.length - 3 || c < 2 || c >board[0].length -3){
 		    board[r][c] = -1;
 		}
 		else{
@@ -13,7 +16,8 @@ public class KnightBoard{
 		}
 	    }
 	}
-	size = n * n;
+	size = m * n;
+	System.out.println(board.length + "," + board[0].length);
     }
     public boolean solve(){
 	//moveKnight(2,2,1);
@@ -92,7 +96,7 @@ public class KnightBoard{
     }
     public void printSolution(){
 	for(int r = 0; r < board.length; r++){
-	    for(int c = 0; c < board.length; c++){
+	    for(int c = 0; c < board[0].length; c++){
 		if(board[r][c] >= 0){
 		    System.out.print("\t"+ board[r][c]);
 		}
@@ -104,7 +108,7 @@ public class KnightBoard{
     public String toString(){
 	String ans = "";
 	for(int r = 0; r < board.length; r++){
-	    for(int c = 0; c < board.length; c++){
+	    for(int c = 0; c < board[0].length; c++){
 		ans+= board[r][c] + "\t";
 	    }
 	    ans += "\n";

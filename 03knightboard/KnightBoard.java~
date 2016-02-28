@@ -16,19 +16,21 @@ public class KnightBoard{
 	size = n * n;
     }
     public boolean solve(){
+	//moveKnight(2,2,1);
 	return solveH(2,2, 1, 0);
     }
     public boolean solveH(int row, int col, int n, int d){
 	//	printSolution();
 	for(int i = d; i < 9; i++){
-	    if(n > size){
+	    
+	    	    if(n > size){
 		return true;
 	    }
 	    if(i == 8){
 		return false;
-	    }
+		}
 	    int[] move = getMove(i);
-	    if(moveKnight(row + move[0], col + move[1],n)){
+	    if(moveKnight(row, col, n)){
 		if(n == size){
 		    return true;
 		}
@@ -37,15 +39,12 @@ public class KnightBoard{
 			return true;
 		    }
 		    else{
-		       	removeKnight(row + move[0], col + move[1], n);
-			return solveH(row +move[0], col + move[1], n, i + 1);
+		       	removeKnight(row, col, n);
+		      	return solveH(row, col, n, i + 1);
 		    }
 		}
 	    }
-	    else{
-		removeKnight(row,col,n);
-	      	return solveH(row,col,n,i+1);
-	    }
+	   
 	}
 	return false;
     }
