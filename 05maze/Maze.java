@@ -19,8 +19,8 @@ public class Maze{
       3. When the file is not found, print an error and exit the program.
     */
     public Maze(String filename, boolean ani){
-	startx = 0;
-	starty = 0;
+	startx = -1;
+	starty = -1;
 	animate = ani;
 	try{
 	    File f = new File(filename);
@@ -49,6 +49,7 @@ public class Maze{
 	    System.out.println(startx + "," + starty);
 	}catch(FileNotFoundException e){
 	    System.out.println("no file found");
+	    System.exit(0);
 	}
     }
 
@@ -87,11 +88,38 @@ public class Maze{
             System.out.println(this);
             wait(20);
         }
+	if(maze[x][y] == 'E'){
+	    return true;
+	}
+	if(move(x,y)){
+	    if(solve(x+1,y) || solve(x-1,y) || solve(x,y+1) || solve(x,y-1)){
+		return true;
+	    }
+	    else{
+		remove(x,y);
+	    }
+	}
 
         //COMPLETE SOLVE
         return false; //so it compiles
     }
+    
+    private boolean move(int x, int y){
+	if(maze[x][y] == ' '){
+	    maze[x][y] = '@';
+	    return true;
+	}
+	else{
+	    return false;
+	}
+    }
 
+    private void remove(int x, int y){
+	if(maze[x][y] == '@'){
+	    maze[x][y] = '.';
+	   
+	}
+    }
 
     //FREE STUFF!!! *you should be aware of this*
 

@@ -51,7 +51,8 @@ public class KnightBoard{
 	   
 	}
 	return false;
-    }
+	}
+
     public int[] getMove(int d){
 	int[] move;
 	if(d == 0){
