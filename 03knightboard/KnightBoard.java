@@ -21,9 +21,9 @@ public class KnightBoard{
     }
     public boolean solve(){
 	//moveKnight(2,2,1);
-	return solveH(2,2, 1, 0);
+	return solveH(2,2,1);
     }
-    public boolean solveH(int row, int col, int n, int d){
+    /*public boolean solveH(int row, int col, int n, int d){
 	//	printSolution();
 	for(int i = d; i < 9; i++){
 	    
@@ -51,8 +51,23 @@ public class KnightBoard{
 	   
 	}
 	return false;
+	}*/
+    public boolean solveH(int r, int c, int n){
+	//	printSolution();
+	if(moveKnight(r,c,n)){
+	    if(n==size){
+		return true;
+	    }
+	    if(solveH(r+2,c+1,n+1)||solveH(r-2,c+1,n+1)||solveH(r+2,c-1,n+1)||solveH(r-2,c-1,n+1)||solveH(r+1,c+2,n+1)||solveH(r-1,c+2,n+1)||solveH(r+1,c-2,n+1)||solveH(r-1,c-2,n+1)){
+		return true;
+	    }
+	    else{
+		removeKnight(r,c,n);
+	    }
 	}
-
+	return false;
+    }
+    
     public int[] getMove(int d){
 	int[] move;
 	if(d == 0){
