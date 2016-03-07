@@ -1,6 +1,6 @@
 public  class Sorts{
     public void mergeSort(int[] ary){
-
+	mergeH(ary, 0
     }
     public static int[] merge(int[] a, int[] b){
 	int A = 0;
