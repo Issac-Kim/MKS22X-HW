@@ -1,0 +1,40 @@
+public class Sorts{
+    public static void mergesort(int[] ary){
+	mergeH(ary, 0, ary.length - 1);
+    }
+    public static int[] mergeH(int[] ary, int start, int end){
+	int[] arr = new int[1];
+	arr[0] = ary[start];
+	return merge(arr, mergeH(ary,start + 1, end);
+	
+    }
+    public static int[] merge(int[] a, int[] b){
+	int A = 0;
+	int B = 0;
+	int i = 0;
+	int[] arr = new int[a.length + b.length];
+	while(A < a.length  && B < b.length){
+	    if(a[A] <= b[B]){
+		arr[i] = a[A];
+		A++;
+	    }
+	    else{
+		arr[i] = b[B];
+		B++;
+	    }
+	    i++;
+	}
+	for(int k = A; k < a.length; k++){
+	    arr[i] = a[k];
+	    i++;
+	}
+	for(int k = B; k < b.length; k++){
+	    arr[i] = b[k];
+	    i++;
+	}
+	return arr;
+    }
+    public static String name(){
+	return "6,Kim,Issac";
+    }
+}
