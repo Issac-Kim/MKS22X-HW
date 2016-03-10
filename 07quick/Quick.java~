@@ -6,29 +6,25 @@ public class Quick{
 	//int index = 6;
 	int index = rand.nextInt(right - left + 1) + left;
 	int val = data[index];
-	int l = left;
-	data[index] = data[right];
-	data[right] = val;
-	
+	int r = right;
 	//	System.out.println("\n val:" + val + "index:" + index);
-
 	
-	
-	
-	for(int i = left; i < right; i++) {
-	    if(data[i] < val) {
-		int temp = data[l];
-		data[l] = data[i];
+	for(int i = left; i < right + 1; i++){
+	    if(data[i] > val && i < r){
+		int temp = data[r];
+		data[r] = data[i];
 		data[i] = temp;
-		l++;
+		i -= 1;
+		r -= 1;
+	    }
+	    else if(data[i] < val && i > index){
+		data[index] = data[i];
+		data[i] = val;
+		index = i;
 	    }
 	}
-	data[right] = data[l];
-	data[l] = val;
-	return l;
+	return index;
     }
-    
-    
     public static int quickselect(int[] data, int k){
 	
 	return help(data, k, 0, data.length -1);
@@ -36,36 +32,17 @@ public class Quick{
     }
     public static int help(int[] data, int k, int left, int right){
 	int index = partition(data, left, right);
-	if(left == right){
-	    return data[left];
-	}
 	//System.out.println(left + "," + right);
 	//System.out.println(toString(data));
 	if(index == k){
-	    return data[index];
+	    return data[k];
 	}
 	else if(index > k){
-	    return help(data, k, left, index - 1);
+	    return help(data, k, left, index);
 	}
 	else{
-	    return help(data, k, index + 1, right);
+	    return help(data, k, index, right);
 	}
-    }
-
-    public static String name(){
-	return "6,Kim,Issac"; //e.g. "7,Kim,Bob"
-    }
-
-    public static void quickSort(int[] data, int left, int right){
-	if(left < right){
-	    int index = partition(data, left, right);
-	    quickSort(data, left, index);
-	    quickSort(data, index+1, right);
-	}
-    }
-
-    public static void quickSort(int[] data){
-	quickSort(data, 0, data.length - 1);
     }
     
     public static String toString(int[] data){
