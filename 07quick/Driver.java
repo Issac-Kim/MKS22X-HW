@@ -2,27 +2,26 @@ import java.util.*;
 
 public class Driver{
     public static void main(String[] args){
-	int[] data = {1,31,213,4,12,3,412,41,5,133,14,21,3};
-	Quick.quickSort(data);
-	for(int i = 0; i < data.length; i++){
-	    System.out.print(data[i] + ",");
-	}
-	System.out.println();
-	int[] data2 = {1,31,213,4,12,3,412,41,5,133,14,21,3};
-	Quick.quickSort2(data2);
-	//	Quick.partition2(data2,0,data2.length-1);
-	for(int i = 0; i < data2.length; i++){
-	    System.out.print(data2[i] + ",");
-	    }
-	/*int data[] = new data[4000000];
-	int data1[] = new data[4000000];
-	int data2[] = new data[4000000];
+int[] d = new int [4000000];
+int[] c = new int [d.length];
+int[] a = new int [d.length];
 
-	for(int i = 0; i < 4000000; i++){
-	    val = Math.random() = Integer.MAX_VALUE;
-	    data[i] = val;
-	    data1[i] = val;
-	    data2[i] = val;
-	    }*/
+for(int i = 0; i < d.length; i++){
+    d[i]= (int)(Math.random()*3);
+c[i]= d[i];
+a[i] = d[i];
+}
+long t = System.currentTimeMillis();
+Quick.quickSort(d); //or even your old quicksort!!!
+long t1 = System.currentTimeMillis();
+long t2 = System.currentTimeMillis();
+//Quick.quickSortOld(a);
+long t3 = System.currentTimeMillis();
+long t4 = System.currentTimeMillis();
+Arrays.sort(c);
+long t5 = System.currentTimeMillis();
+System.out.println("new:" + (t1-t) + "old:" + (t3-t2) + "arrays:" + (t5-t4));
+System.out.println(Arrays.equals(a,c));
+System.out.println(Arrays.equals(d,c));
     }
 }
