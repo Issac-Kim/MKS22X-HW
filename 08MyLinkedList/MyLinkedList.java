@@ -30,6 +30,9 @@ public class MyLinkedList{
 	}
 	return s;
     }
+    public int get(int index){
+	
+    }
     private class LNode{
 	int val;
 	LNode next;
