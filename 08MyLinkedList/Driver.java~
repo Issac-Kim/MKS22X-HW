@@ -8,9 +8,5 @@ public class Driver{
 	    l.add(i);
 	}
 	System.out.println(l);
-	System.out.println(l.remove(2));
-	System.out.println(l);
-	//l.add(5, 1000);
-	//System.out.println(l);
     }
 }
