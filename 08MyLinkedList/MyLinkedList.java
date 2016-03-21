@@ -1,4 +1,4 @@
-public class MyLinkedList{
+public class MyLinkedList<T>{
     LNode start;
     LNode end;
     int size;
@@ -97,21 +97,21 @@ public class MyLinkedList{
 	    return size - 1;
 	}
     }
-    private class LNode{
-	int val;
-	LNode next;
-	private LNode(int v){
-	    val = v;
+    private class LNode<T>{
+	T thing;
+	LNode<T> =  next;
+	private LNode(T thing){
+	    this.thing = thing;
 	}
 	private int get(){
-	    return val;
+	    return thing;
 	}
-	private LNode getNext(){
+	private LNode<T> getNext(){
 	    return next;
 	}
-	private int set(int num){
-	    int temp = val;
-	    val = num;
+	private int set(T thing){
+	    T temp = this.thing;
+	    this.thing = thing;
 	    return temp;
 	}
 	private boolean hasNext(){
@@ -120,7 +120,7 @@ public class MyLinkedList{
 	    }
 	    return true;
 	}
-	private void setNext(LNode n){
+	private void setNext(LNode<T> n){
 	    next = n;
 	}
     }
