@@ -1,5 +1,6 @@
 public class MyLinkedList{
     LNode start;
+    LNode end;
     int size;
     
     public boolean add(int n){
@@ -17,16 +18,23 @@ public class MyLinkedList{
 	return true;
     }
     public boolean add(int index, int val){
-	LNode current = start;
-	for(int i = 0; i < index; i++){
-	    current = current.getNext();
+	if(index == size){
+	    add(val);
 	}
-	int temp = current.get();
-	LNode next = current.getNext();
-	current.set(val);
-	current = current.getNext();
-	current.set(temp);
-	current.setNext(next);
+	else if(index == 0){
+	    LNode temp = new LNode(val);
+	    temp.setNext(start);
+	    start = temp;
+	}
+	else{
+	    LNode current = start;
+	    for(int i = 0; i < index; i++){
+		current = current.getNext();
+	    }
+	    LNode temp = current;
+	    current.set(val);
+	    current.setNext(temp);
+	}
 	size++;
 	return true;
     }
