@@ -1,44 +1,56 @@
 public class MyLinkedList<T>{
-    LNode start;
-    LNode end;
+    LNode<T> start;
+    LNode<T> end;
     int size;
     
-    public boolean add(int n){
-	LNode current = start;
+    public boolean add(T thing){
+	LNode<T> current = start;
 	if(start == null){
-	    start = new LNode(n);
+	    start = new LNode<T>(thing);
 	}
 	else{
 	    while(current.getNext() != null){
 		current = current.getNext();
 	    }
-	    current.setNext(new LNode(n));
+	    current.setNext(new LNode<T>(thing));
 	}
 	size++;
 	return true;
     }
     public boolean add(int index, int val){
-	if(index == size){
-	    add(val);
-	}
-	else if(index == 0){
-	    LNode temp = new LNode(val);
-	    temp.setNext(start);
-	    start = temp;
+	if(index < 0 || index > size){
+	    IndexOutOfBoundsException e = new IndexOutOfBoundsException();
+	    throw e;
+	    return false;
 	}
 	else{
-	    LNode current = start;
-	    for(int i = 0; i < index; i++){
-		current = current.getNext();
+	    if(index == size){
+		add(val);
 	    }
+	    else if(index == 0){
+		LNode temp = new LNode(val);
+		temp.setNext(start);
+	    start = temp;
+	    }
+	    else{
+		LNode current = start;
+		for(int i = 0; i < index; i++){
+		    current = current.getNext();
+		}
 	    LNode temp = current;
 	    current.set(val);
 	    current.setNext(temp);
+	    }
+	    size++;
+	    return true;
 	}
-	size++;
-	return true;
     }
     public int remove(int index){
+	if(index < 0 || index >= size){
+	    IndexOutOfIndexException e = new IndexOutOfBoundException();
+	    throw e;
+	    
+	}
 	LNode current = start;
 	for(int i = 0; i < index; i++){
 	    current = current.getNext();
