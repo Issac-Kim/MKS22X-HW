@@ -17,7 +17,7 @@ public class MyLinkedList<T>{
 	size++;
 	return true;
     }
-    public boolean add(int index, int val){
+    public boolean add(int index, T thing){
 	if(index < 0 || index > size){
 	    IndexOutOfBoundsException e = new IndexOutOfBoundsException();
 	    throw e;
@@ -25,20 +25,20 @@ public class MyLinkedList<T>{
 	}
 	else{
 	    if(index == size){
-		add(val);
+		add(thing);
 	    }
 	    else if(index == 0){
-		LNode temp = new LNode(val);
+		LNode<T> temp = new LNode(thing);
 		temp.setNext(start);
 	    start = temp;
 	    }
 	    else{
-		LNode current = start;
+		LNode<T> current = start;
 		for(int i = 0; i < index; i++){
 		    current = current.getNext();
 		}
-	    LNode temp = current;
-	    current.set(val);
+	    LNode<T> temp = current;
+	    current.set(thing);
 	    current.setNext(temp);
 	    }
 	    size++;
@@ -51,13 +51,13 @@ public class MyLinkedList<T>{
 	    throw e;
 	    
 	}
-	LNode current = start;
+	LNode<T> current = start;
 	for(int i = 0; i < index; i++){
 	    current = current.getNext();
 	}
 	int temp = current.get();
-	LNode next = current.getNext();
-	LNode head = start;
+	LNode<T> next = current.getNext();
+	LNode<T> head = start;
 	for(int i = 0; i < index - 1; i++){
 	    head = head.getNext();
 	}
@@ -66,7 +66,7 @@ public class MyLinkedList<T>{
 	return temp;
     }
     public String toString(){
-	LNode current = start;
+	LNode<T> current = start;
 	String s = "";
 	while(current != null){
 	    s += current.get() + ",";
