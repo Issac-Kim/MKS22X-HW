@@ -1,7 +1,12 @@
-public class MyLinkedList<T>{
+public class MyLinkedList<T> implements Iterable{
     LNode<T> start;
     LNode<T> end;
     int size;
+    T thing;
+
+    public Iterator<T> iterator(){
+	return new MyLinkeListIterator(start);
+    }
     
     public boolean add(T thing){
 	LNode<T> current = start;
@@ -111,7 +116,7 @@ public class MyLinkedList<T>{
     }
     private class LNode<T>{
 	T thing;
-	LNode<T> =  next;
+	LNode<T> next;
 	private LNode(T thing){
 	    this.thing = thing;
 	}
@@ -134,6 +139,27 @@ public class MyLinkedList<T>{
 	}
 	private void setNext(LNode<T> n){
 	    next = n;
+	}
+    }
+    public class MyLinkedListIterator implements Iterator<T>{
+	private LNode next;
+	public MyLinkedListIterator(){
+	    next = start;
+	}
+	public boolean hasNext(){
+	    return next!= null;
+	}
+	public T next(){
+	    if(!hasNext()){
+		throw new NoSuchElementException();
+	    }
+	    T thing = next.getValue();
+	    next = next.getNext();
+	    return thing;
+
+	}
+	public void remove(){
+	    throw new UnsupportedOperationException();
 	}
     }
 }
