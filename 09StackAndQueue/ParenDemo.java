@@ -6,7 +6,7 @@ public class ParenDemo{
 	    if(pos.equals("(") || pos.equals("<") || pos.equals("{") || pos.equals("[")){
 		m.push(pos);
 	    }
-	    
+	    if(!m.isEmpty()){
 	    if(pos.equals(">")){
 		if(m.peek().equals("<")){
 		    m.pop();
@@ -38,6 +38,7 @@ public class ParenDemo{
 		else{
 		    return false;
 		}
+	    }
 	    }
 	    System.out.println(m);
 	}
