@@ -27,8 +27,8 @@ public class MyStack<T> extends MyLinkedList<T>{
     }
     public boolean isEmpty(){
 	if(size() > 0){
-	    return true;
+	    return false;
 	}
-	return false;
+	return true;
     }
 }

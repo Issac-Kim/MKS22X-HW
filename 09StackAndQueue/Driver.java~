@@ -1,0 +1,12 @@
+public class Driver{
+    public static void main(String[] args){
+	MyStack m = new MyStack();
+	m.push(3);
+	System.out.println(m);
+	System.out.println(m.peek());
+	m.push(5);
+	System.out.println(m.pop());
+	System.out.println(m);
+	
+    }
+}

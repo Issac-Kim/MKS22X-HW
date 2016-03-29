@@ -1,0 +1,59 @@
+public class ParenDemo{
+    public boolean isMatching(String s){
+	MyStack m = new MyStack();
+	for(int i = 0; i < s.length() - 1; i++){
+	    String pos = s.substring(i,i+1);
+	    if(pos == "(" || pos == "<" || pos == "{" || pos == "["){
+		m.push(pos);
+	    }
+	    if(pos == ">"){
+		if(m.peek() == "<"){
+		    m.pop();
+		}
+		else{
+		    return false;
+		}
+	    }
+	    if(pos == ">"){
+		if(m.peek() == "<"){
+		    m.pop();
+		}
+		else{
+		    return false;
+		}
+	    }
+	    if(pos == ")"){
+		if(m.peek() == "("){
+		    m.pop();
+		}
+		else{
+		    return false;
+		}
+	    }
+	    if(pos == "]"){
+		if(m.peek() == "["){
+		    m.pop();
+		}
+		else{
+		    return false;
+		}
+	    }
+	    if(pos == "}"){
+		if(m.peek() == "{"){
+		    m.pop();
+		}
+		else{
+		    return false;
+		}
+	    }
+	}
+	return m.isEmpty();
+    }
+    public static void main(String[] args){
+	String input = "";
+	if(args.length > 0){
+	    input = args[0];
+	}
+	System.out.println(isMatching(input));
+    }
+}
