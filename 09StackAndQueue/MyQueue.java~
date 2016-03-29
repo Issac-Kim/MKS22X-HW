@@ -1,0 +1,23 @@
+public class MyStack<T> extends MyLinkedList<T>{
+    public MyStack(){
+	super();
+    }
+    public void push(T item){
+	add(0,index);
+    }
+    public T pop(){
+	return remove(0);
+    }
+    public T peek(){
+	return get(0);
+    }
+    public int size(){
+	return super.size();
+    }
+    public boolean isEmpty(){
+	if(size() > 0){
+	    return true;
+	}
+	return false;
+    }
+}
