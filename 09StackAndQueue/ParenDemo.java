@@ -6,48 +6,50 @@ public class ParenDemo{
 	    if(pos.equals("(") || pos.equals("<") || pos.equals("{") || pos.equals("[")){
 		m.push(pos);
 	    }
-	    if(!m.isEmpty()){
-	    if(pos.equals(">")){
-		if(m.peek().equals("<")){
-		    m.pop();
+	    else if(!m.isEmpty()){
+		if(pos.equals(">")){
+		    if(m.peek().equals("<")){
+			m.pop();
+		    }
+		    else{
+			return false;
+		    }
 		}
-		else{
-		    return false;
+		else if(pos.equals("}")){
+		    if(m.peek().equals("{")){
+			m.pop();
+		    }
+		    else{
+			return false;
+		    }
+		}
+		else if(pos.equals("]")){
+		    if(m.peek().equals("[")){
+			m.pop();
+		    }
+		    else{
+			return false;
+		    }
+		}
+		else if(pos.equals(")")){
+		    if(m.peek().equals("(")){	
+			m.pop();
+		    }
+		    else{
+			return false;
+		    }
 		}
 	    }
-	    if(pos.equals("}")){
-		if(m.peek().equals("{")){
-		    m.pop();
-		}
-		else{
-		    return false;
-		}
-	    }
-	    if(pos.equals("]")){
-		if(m.peek().equals("[")){
-		    m.pop();
-		}
-		else{
-		    return false;
-		}
-	    }
-	    if(pos.equals(")")){
-		if(m.peek().equals("(")){	
-		    m.pop();
-		}
-		else{
-		    return false;
-		}
-	    }
-	    }
-	    System.out.println(m);
+	    else if(m.isEmpty() && (pos.equals(">") || pos.equals("}") || pos.equals("]") || pos.equals(")"))){
+		return false;
+	    } 
 	}
 	return m.isEmpty();
     }
     public static void main(String[] args){
-	String input = "<<>>>";
+	String input = "<<<>>>>";
 	if(args.length > 0){
-	    input = "<<>";
+	    input = args[0];
 	   
 	}
 	 System.out.println(isMatching(input));
