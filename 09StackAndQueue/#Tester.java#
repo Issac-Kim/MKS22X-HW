@@ -7,10 +7,9 @@ public class Tester{
 	MyQueue<String> myQ = new MyQueue<String>;
 	for(int i = 0; i < 100; i++){
 	    String s = "" + i;
-	    s.push(s);
-	    myS.push(s);
-	    q.enqueue(s);
-	    myQ.enqueue(s);
+	    s.push(i);
+	    myS.push(i);
+	    q.queue(i);
 	}
     }
 }
