@@ -67,6 +67,22 @@ public MyDeque<T>{
 	    return temp;
 	}
     }
+    public T getFirst(){
+	if(size == 0){
+	    throw new NoSuchElementException();
+	}
+	else{
+	    return data[first];
+	}
+    }
+    public T getLast(){
+	if(size == 0){
+	    throw new NoSuchElementException();
+	}
+	else{
+	    return data[last];
+	}
+    }
     public String toString(){
 	String s = "";
 	for(int i = 0; i < size; i++){
