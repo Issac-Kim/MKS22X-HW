@@ -2,26 +2,44 @@ public MyDeque<T>{
     int size;
     int first;
     int last;
-    Object[] data;
+    T[] data;
+    @SupressWarnings("unchecked")
     public MyDeque(){
-	size = size * 2;
-	data = new T[size];
-	T[] temp = T[size];
-	temp = grow();
-	data = temp;
+	data = (T[]) new Object[10];
+	first = 0;
+	last = 0;
+	size = 0;
     }
-    public Object[] grow(){
-	Object[] arr = new Object[size*2];
+    private void grow(){
+	T[] arr = new (T[]) new Object[size * 2];
 	for(int i = 0; i < size; i++){
 	    arr[i] = data[(first + i) % size]; 
 	}
-	return arr;
+	for(int i = 0; i < size; i++){
+	    data[i] = arr[i];
+	    last = i;
+	}
+	first = 0;
     }
     public void addFirst(T value){
-
+	if(size == data.length){
+	    grow();
+	}
+	int index = first - 1;
+	if(index < 0){
+	    index = size - 1;
+	}
+	data[index] = value;
     }
     public void addLast(T value){
-
+	if(size == data.length){
+	    grow();
+	}
+	int index = last + 1;
+	if(index == size()){
+	    index = 0;
+	}
+	data[index] = value;
     }
     public String toString(){
 	String s = "";
