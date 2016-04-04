@@ -30,6 +30,7 @@ public MyDeque<T>{
 	    index = size - 1;
 	}
 	data[index] = value;
+	size++;
     }
     public void addLast(T value){
 	if(size == data.length){
@@ -40,6 +41,31 @@ public MyDeque<T>{
 	    index = 0;
 	}
 	data[index] = value;
+	size++;
+    }
+    public T removeFirst(){
+	if(size() == 0){
+	    throw new NoSuchElementException();
+	}
+	else{
+	    T temp = data[first];
+	    data[first] = null;
+	    size--;
+	    first = (first + 1)%size;
+	    return temp;
+	}
+    }
+    public T removeLast(){
+	if(size() == 0){
+	    throw new NoSuchElementException();
+	}
+	else{
+	    T temp = data[last];
+	    data[last] = null;
+	    size--;
+	    last = (last - 1)%size;
+	    return temp;
+	}
     }
     public String toString(){
 	String s = "";
