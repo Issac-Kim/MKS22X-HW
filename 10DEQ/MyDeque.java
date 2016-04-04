@@ -1,9 +1,11 @@
-public MyDeque<T>{
+import java.util.*;
+
+public class  MyDeque<T>{
     int size;
     int first;
     int last;
     T[] data;
-    @SupressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public MyDeque(){
 	data = (T[]) new Object[10];
 	first = 0;
@@ -11,7 +13,7 @@ public MyDeque<T>{
 	size = 0;
     }
     private void grow(){
-	T[] arr = new (T[]) new Object[size * 2];
+	T[] arr = (T[]) new Object[size * 2];
 	for(int i = 0; i < size; i++){
 	    arr[i] = data[(first + i) % size]; 
 	}
@@ -37,14 +39,14 @@ public MyDeque<T>{
 	    grow();
 	}
 	int index = last + 1;
-	if(index == size()){
+	if(index == size){
 	    index = 0;
 	}
 	data[index] = value;
 	size++;
     }
     public T removeFirst(){
-	if(size() == 0){
+	if(size == 0){
 	    throw new NoSuchElementException();
 	}
 	else{
@@ -56,7 +58,7 @@ public MyDeque<T>{
 	}
     }
     public T removeLast(){
-	if(size() == 0){
+	if(size == 0){
 	    throw new NoSuchElementException();
 	}
 	else{
