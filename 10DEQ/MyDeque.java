@@ -5,17 +5,18 @@ public class  MyDeque<T>{
     int first;
     int last;
     T[] data;
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked"})
     public MyDeque(){
 	data = (T[]) new Object[10];
 	first = 0;
 	last = 0;
 	size = 0;
     }
+    @SuppressWarnings({"unchecked"})
     private void grow(){
 	T[] arr = (T[]) new Object[size * 2];
 	for(int i = 0; i < size; i++){
-	    arr[i] = data[(first + i) % size]; 
+	    arr[i] = data[(first + i) % data.length]; 
 	}
 	for(int i = 0; i < size; i++){
 	    data[i] = arr[i];
@@ -29,7 +30,7 @@ public class  MyDeque<T>{
 	}
 	int index = first - 1;
 	if(index < 0){
-	    index = size - 1;
+	    index = data.length - 1;
 	}
 	data[index] = value;
 	size++;
@@ -88,7 +89,7 @@ public class  MyDeque<T>{
     public String toString(){
 	String s = "";
 	for(int i = 0; i < size; i++){
-	    s += data[(first + i) % size] + ",";
+	    s += data[(first + i) % data.length] + ",";
 	}
 	return s;
     }
