@@ -83,7 +83,10 @@ public class  MyDeque<T>{
 	    T temp = data[last];
 	    data[last] = null;
 	    size--;
-	    last = (last - 1)%size;
+	    last--;
+	    if(last < 0){
+		last = data.length - 1;
+	    }
 	    return temp;
 	}
     }
