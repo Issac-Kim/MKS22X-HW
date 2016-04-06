@@ -47,11 +47,17 @@ public class  MyDeque<T>{
 	if(size == data.length){
 	    grow();
 	}
-	int index = last + 1;
-	if(index == size){
-	    index = 0;
+	if(size == 0){
+	    last = 0;
+	    data[0] = value;
 	}
-	data[index] = value;
+	else{
+	    last++;
+	    if(last == data.length){
+		last = 0;
+	    }
+	    data[last] = value;
+	}
 	size++;
     }
     public T removeFirst(){
@@ -62,7 +68,10 @@ public class  MyDeque<T>{
 	    T temp = data[first];
 	    data[first] = null;
 	    size--;
-	    first = (first + 1)%size;
+	    first++;
+	    if(first == data.length){
+		first = 0;
+	    }
 	    return temp;
 	}
     }

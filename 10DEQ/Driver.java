@@ -7,5 +7,15 @@ public class Driver{
 	System.out.println(d);
 	//System.out.println(d.size);
 	System.out.println(d.string());
+	for(int i = 0; i < 10; i++){
+	    d.addLast(""+i);
+	}
+	System.out.println(d);
+	//System.out.println(d.size);
+	//	System.out.println(d.string());
+	for(int i = 0; i < 29; i++){
+	    d.removeFirst();
+	}
+	System.out.println(d);
     }
 }
