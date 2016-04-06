@@ -5,5 +5,7 @@ public class Driver{
 	    d.addFirst("" + i);
 	}
 	System.out.println(d);
+	//System.out.println(d.size);
+	System.out.println(d.string());
     }
 }

@@ -18,21 +18,29 @@ public class  MyDeque<T>{
 	for(int i = 0; i < size; i++){
 	    arr[i] = data[(first + i) % data.length]; 
 	}
+	data = (T[]) new Object[size * 2];
 	for(int i = 0; i < size; i++){
 	    data[i] = arr[i];
 	    last = i;
 	}
 	first = 0;
+	System.out.println(data.length);
     }
     public void addFirst(T value){
 	if(size == data.length){
 	    grow();
 	}
-	int index = first - 1;
-	if(index < 0){
-	    index = data.length - 1;
+	if(size == 0){
+	    first = 0;
+	    data[0] = value;
 	}
-	data[index] = value;
+	else{
+	    first--;
+	    if(first < 0){
+		first = data.length -1;
+	    }
+	    data[first] = value;
+	}
 	size++;
     }
     public void addLast(T value){
@@ -90,6 +98,13 @@ public class  MyDeque<T>{
 	String s = "";
 	for(int i = 0; i < size; i++){
 	    s += data[(first + i) % data.length] + ",";
+	}
+	return s;
+    }
+    public String string(){
+	String s = "";
+	for(int i = 0; i < data.length; i++){
+	    s+= data[i] + ",";
 	}
 	return s;
     }
