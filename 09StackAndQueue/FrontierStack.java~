@@ -1,0 +1,26 @@
+import java.util.*;
+public class FrontierStack<T> extends MyStack<T> implements Frontier<T>{
+    public FrontierStack(){
+	super();
+    }
+    public void add(T element){
+	push(element);
+    }
+    public T next(){
+	if(isEmpty()){
+	    throw new NoSuchElementException();
+	}
+	else{
+	    return getNext();
+	}
+    }
+    public boolean hasNext(){
+	if(getNext() == null){
+	    return false;
+	}
+	else{
+	    return true;
+
+	}
+    }
+}
