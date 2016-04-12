@@ -2,10 +2,14 @@ import java.util.*;
 import java.io.*;
 
 public class BetterMaze{
-    private class Node{
-	Node prev;
+    private class Node<T>{
+	Node<T> prev;
 	int[][] coords;
-	public Node(coords,
+	public Node(int r, int c, Node<T> pre){
+	    coords[0] = r;
+	    coords[1] = c;
+	    prev = pre;
+	}
     }
 
     private char[][] maze;
@@ -31,7 +35,9 @@ public class BetterMaze{
     /**initialize the frontier as a queue and call solve
     **/
     public boolean solveBFS(){  
-        /** IMPLEMENT THIS **/      
+        /** IMPLEMENT THIS **/   
+	placesToGo = new FrontierQueue<Coord>();
+	
 	return false;
     }   
 
