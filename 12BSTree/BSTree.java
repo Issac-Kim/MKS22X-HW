@@ -20,6 +20,13 @@ public class BSTree<T extends Comparable<T>>{
 	    add(value, localRoot.getRight());
 	}
     }
+    public String toString(){
+	return toString(root);
+    }
+    public String toString(Node localRoot){
+	String ans = "";
+	
+    }
     
     public class Node{
 	Node left, right;
