@@ -5,29 +5,36 @@ public class BSTree<T extends Comparable<T>>{
 	this.root = root;
     }
     public BSTree(){
+	root = null;
+    }
+    public int getHeight(){
+	if(root == null){
+	    return 0;
+	}else{
+	    return root.height();
+	}
     }
     public void add(T value){
-	add(value, root);
-    }
-    public void add(T value, Node localRoot){
-	if(localRoot == null){
-	    localRoot = new Node(value);
-	}
-	else if(value.compareTo(localRoot.getData()) < 0){
-	    add(value, localRoot.getLeft());
-	}
-	else{
-	    add(value, localRoot.getRight());
+	if(root == null){
+	    root = new Node(value);
+	}else{
+	    root.add(value);
 	}
     }
     public String toString(){
-	return toString(root);
+	if(root == null){
+	    return "";
+	}else{
+	    return root.toString();
+	}
     }
-    public String toString(Node localRoot){
-	String ans = "";
-	
+    public boolean contains(T value){
+	if(root == null){
+	    return false;
+	}else{
+	    return root.contains(value);
+	}
     }
-    
     public class Node{
 	Node left, right;
 	T data;
@@ -57,15 +64,63 @@ public class BSTree<T extends Comparable<T>>{
 	public void setData(T data){
 	    this.data = data;
 	}
-	public int numChildren(){
-	    int num = 0;
-	    if(getLeft() != null){
-		num++;
+	public int height(){
+	    if(getLeft() == null && getRight() == null){
+		return 1;
 	    }
-	    if(getRight() != null){
-		num++;
+	    if(getLeft() != null && getRight() != null){
+		return 1 + Math.max(getLeft().height(), getRight().height());
 	    }
-	    return num;
+	    else if(getLeft() == null){
+		return 1 + getRight().height();
+	    }
+	    else{
+		return 1 + getLeft().height();
+	    }
+	}
+	public void add(T value){
+	    if(value.compareTo(getData()) < 0){
+		if(getLeft() == null){
+		    setLeft(new Node(value));
+		}else{
+		    getLeft().add(value);
+		}
+	    }else{
+		if(getRight() == null){
+		    setRight(new Node(value));
+		}else{
+		    getRight().add(value);
+		}
+	    }
+	}
+	public String toString(){
+	    String ans = getData() + " ";
+	    if(getLeft() == null){
+		ans += "_ ";
+	    }else{
+		ans += getLeft().toString();
+	    }
+	    if(getRight() == null){
+		ans += "_ ";
+	    }else{
+		ans += getRight().toString();
+	    }
+	    return ans;
+	}
+	public boolean contains(T value){
+	    if(getData() == value){
+		return true;
+	    }
+	    if(getLeft() == null && getRight() == null){
+		return false;
+	    }
+	    else if(value.compareTo(getData()) < 0){
+		return getLeft().contains(value);
+	    }
+	    else if(value.compareTo(getData()) > 0){
+		return getRight().contains(value);
+	    }
+	    return false;
 	}
     }
 
