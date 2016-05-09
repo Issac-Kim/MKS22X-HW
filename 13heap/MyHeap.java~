@@ -3,14 +3,16 @@ import java.util.*;
 
 public class MyHeap<T extends Comparable<T>>{
     private T[] data;
-    private int size = 0;
+    private int size;
     boolean isMax = true;
     
     public MyHeap(){
 	data = new T[10];
+	size = 0;
     }
     public MyHeap(T[] Array){
 	data = heapify(Array);
+	size = Array.length;
     }
 
     private void pushDown(int k){
@@ -36,7 +38,12 @@ public class MyHeap<T extends Comparable<T>>{
 	return data[0];
     }
     public void add(T x){
-
+	if(size == data.length -1){
+	    doubleSize();
+	}
+	if(size == 0){
+	    data[1] = T;
+	}
     }
     private void doubleSize(){
 
