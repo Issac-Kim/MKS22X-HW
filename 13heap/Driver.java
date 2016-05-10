@@ -20,5 +20,12 @@ public class Driver{
 	String[] arr = {"a","b","f","l","z","k","g","m"};
 	MyHeap<String> l = new MyHeap<String>(arr);
 	System.out.println(l);
+	Integer[] da = new Integer[30];
+	for(int i = 0; i < 30; i++){
+	    Integer n = new Integer(i);
+	    da[i] = n;
+	}
+	MyHeap<Integer> k = new MyHeap<Integer>(da);
+	System.out.println(k);
     }
 }

@@ -25,38 +25,49 @@ public class MyHeap<T extends Comparable<T>>{
 	}
     }
     private void pushDown(int k){
-	T temp = data[k];
-	if(!compare(data[k*2],data[k*2+1])){
-	    data[k] = data[k*2+1];
-	    data[k*2+1] = temp;
+	if(k < 0 || k > size){
+	    throw new IndexOutOfBoundsException();
 	}
-	else{
-	    data[k] = data[k*2];
-	    data[k*2] = temp;
+	int index = k;
+	while(index * 2 + 1 <= size && (!compare(data[index], data[index*2]) || !compare(data[index], data[index*2 + 1]))){
+	    T temp = data[index];
+	    if(!compare(data[index*2],data[index*2+1])){
+		data[index] = data[index*2+1];
+		data[index*2+1] = temp;
+		index = index * 2 +1;
+	    }
+	    else{
+		data[index] = data[index*2];
+		data[index*2] = temp;
+		index = index * 2;
+	    }
+	}
+	if(index * 2 <= size && !compare(data[index], data[index * 2])){
+	    T temp = data[index];
+	    data[index] = data[index * 2];
+	    data[index * 2] = temp;
 	}
     }
     private void pushUp(int k){
-	T temp = data[k];
-	data[k] = data[k/2];
-	data[k/2] = temp;
+	if(k < 0 || k > size){
+	    throw new IndexOutOfBoundsException();
+	}
+	int index = k;
+	while(index > 1 && compare(data[index], data[index/2])){
+	    if(compare(data[index], data[index/2])){
+		T temp = data[index];
+		data[index] = data[index/2];
+		data[index/2] = temp;
+	    }
+	    index = index/2;
+	}
     }
     public void heapify(T[] arr){
 	for(int i = 0; i < arr.length; i++){
 	    data[i + 1] = arr[i];
 	}
-	if(size > 1){
-	    int index = size / 2;
-	    while(index != 1){
-		for(int i = 0; i < index; i++){
-		    if(((index + i) * 2 +1 <= size)&&(!compare(data[index + i], data[(index + i) * 2]) ||!compare(data[index + i], data[(index + i) *2 + 1]))){
-			pushDown(index + i);
-		    }
-		}
-		index = index / 2;
-		
-	    }
-	
-	    
+	for(int i = size/2; i > 0; i--){
+	    pushDown(i);
 	}
     }
     public T delete(){
@@ -93,11 +104,8 @@ public class MyHeap<T extends Comparable<T>>{
 	else{
 	    data[size + 1] = x;
 	    int index = size + 1;
-	    while(index > 1 && compare(data[index], data[index/2])){
-		pushUp(index);
-		index = index/2;
-	    }
 	    size++;
+	    pushUp(index);
 	}
 	    
     }
