@@ -16,6 +16,14 @@ public class MyHeap<T extends Comparable<T>>{
 	heapify(Array);
 	
     }
+    public MyHeap(boolean Max){
+	this();
+	isMax = Max;
+    }
+    public MyHeap(T[] arr, boolean Max){
+	this(arr);
+	isMax = Max;
+    }
     private boolean compare(T x, T y){
 	if(isMax){
 	    return x.compareTo(y) > 0;
@@ -72,25 +80,9 @@ public class MyHeap<T extends Comparable<T>>{
     }
     public T delete(){
 	T temp = data[1];
-	if(size == 1){
-	    data[1] = null;
-	    size--;
-	}
-	else{
-	    data[1] = null;
-	    int index = 1;
-	    while(index < size/2){
-		if(compare(data[index * 2], data[index * 2 + 1])){
-		    index = index * 2;
-		}
-		else{
-		    index = index * 2 + 1;
-		}
-		pushUp(index);
-		
-	    }
-	    size--;
-	}
+	data[1] = data[size];
+	pushDown(1);
+	size--;
 	return temp;
     }
     public void add(T x){

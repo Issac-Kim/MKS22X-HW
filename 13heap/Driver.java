@@ -15,7 +15,7 @@ public class Driver{
 	System.out.println(m);
 	m.add(new Integer(11));
 	System.out.println(m);
-	m.delete();
+	System.out.println(m.delete());
 	System.out.println(m);
 	String[] arr = {"a","b","f","l","z","k","g","m"};
 	MyHeap<String> l = new MyHeap<String>(arr);
