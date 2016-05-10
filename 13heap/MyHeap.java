@@ -5,24 +5,28 @@ import java.util.*;
 public class MyHeap<T extends Comparable<T>>{
     private T[] data;
     private int size;
-    boolean isMax = true;
+    private boolean isMax;
     public MyHeap(){
 	data = (T[]) new Comparable[10];
 	size = 0;
+	isMax = true;
     }
     public MyHeap(T[] Array){
 	data = (T[]) new Comparable[Array.length + 1];
 	size = Array.length;
+	isMax= true;
 	heapify(Array);
-	
     }
     public MyHeap(boolean Max){
-	this();
+	data = (T[]) new Comparable[10];
+	size = 0;
 	isMax = Max;
     }
     public MyHeap(T[] arr, boolean Max){
-	this(arr);
+	data = (T[]) new Comparable[arr.length + 1];
+	size = arr.length;
 	isMax = Max;
+	heapify(arr);
     }
     private boolean compare(T x, T y){
 	if(isMax){
