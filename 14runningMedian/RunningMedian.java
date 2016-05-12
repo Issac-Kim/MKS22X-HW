@@ -4,7 +4,7 @@ public class RunningMedian{
     private MyHeap<Integer> min, max;
     
     public RunningMedian(){
-	min = new MyHeap<Integer>();
+	min = new MyHeap<Integer>(false);
 	max = new MyHeap<Integer>();
     }
     
@@ -23,7 +23,10 @@ public class RunningMedian{
     }
 
     public void add(Integer n){
-	if(n.compareTo(getMedian()) < 1){
+	if(min.getSize() == 0 && max.getSize() == 0){
+	    min.add(n);
+	}
+	else if(n.doubleValue() < getMedian()){
 	    max.add(n);
 	}
 	else{
@@ -45,17 +48,18 @@ public class RunningMedian{
 
     public String toString(){
 	if(max.getSize() == min.getSize()){
-	    return max.toString() + "-" + getMedian() + "-" + min.toString();
+	    return max.toString() + "-" + getMedian() + "- " + min.toString();
 	}
 	else{
-	    if(max.getSize() > min.getSize){
+	    String ans = "";
+	    if(max.getSize() > min.getSize()){
 		Integer temp = max.delete();
-		String ans = max.toString() + "-" + temp.toString() + "-" + min.toString();
+		ans = max.toString() + "-" + temp.toString() + "- " + min.toString();
 		max.add(temp);
 	    }
-	    if(max.getSize() < min.getSize){
+	    if(max.getSize() < min.getSize()){
 		Integer temp = min.delete();
-		String ans = max.toString() + "-" + temp.toString() + "-" + min.toString();
+		ans = max.toString() + "-" + temp.toString() + "- " + min.toString();
 		min.add(temp);
 	    }
 	    return ans;
