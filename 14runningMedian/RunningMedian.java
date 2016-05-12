@@ -65,4 +65,7 @@ public class RunningMedian{
 	    return ans;
 	}
     }
+    public String getHeap(){
+	return "max: " + max.toString() + "\nmin: " + min.toString();
+    }
 }

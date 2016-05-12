@@ -7,16 +7,20 @@ public class Driver{
 	m.add(new Integer(10));
 	System.out.println(m);
 	RunningMedian l = new RunningMedian();
-	for(int i = 0; i < 20; i++){
+	for(int i = 0; i < 10; i++){
 	    Integer s = new Integer(i);
-	    m.add(s);
+	    l.add(s);
 	}
-	System.out.println(m);
+	System.out.println(l);
+	System.out.println(l.getHeap());
 	for(int i = 20; i > 10; i--){
 	    Integer s = new Integer(i);
 	    l.add(s);
 	}
+	System.out.println(l);
+	System.out.println(l.getHeap());
 	l.add(new Integer(1));
 	System.out.println(l);
+	System.out.println(l.getHeap());
     }
 }
